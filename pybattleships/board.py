@@ -1,4 +1,6 @@
-''' Defines a Board, which represents one player's half of the game. '''
+'''
+This module defines the class :class:`Board`.
+'''
 from collections import OrderedDict
 from itertools import dropwhile
 
@@ -6,8 +8,17 @@ from .ship import ShotResult, Ship
 
 
 class Board:
-    ''' Represents one half of the game. '''
-    def __init__(self, ships : [Ship], validate = True) -> None:
+    '''
+    A Board is a 10x10 grid that holds :class:`Ship` s.
+    '''
+    def __init__(self, ships : [Ship], validate = True):
+        '''
+        :param [Ship] ships: the ships to place on the Board.
+        :param bool validate: whether the board configuration must be valid.
+
+        :raises ValueError: if the board configurations is invalid and `validate`
+            is True.
+        '''
         self._tries = OrderedDict() # type: [(int, int)] : ShotResult
 
         self._ships = ships
@@ -18,6 +29,21 @@ class Board:
 
     @property
     def valid_board(self) -> bool:
+        '''
+        Returns a boolean indicating whether the Board's state is valid.
+
+        A Board is valid iff it contains ten ships:
+
+         - One Ship with length 5,
+         - Two Ships with length 4,
+         - Three Ships with Length 3, and
+         - Four Ships with Length 2.
+
+        Additionally, the Ships may not overlap each other, or exceed the
+        boundaries of the Board.
+
+        :type: bool
+        '''
         if len(self._ships) < 10:
             return False
 
@@ -38,9 +64,19 @@ class Board:
 
     @property
     def is_loss(self) -> bool:
+        '''
+        Whether all the Ships on the Board have sunk.
+
+        :type: bool
+        '''
         return self.ships_left <= 0
 
     def process_hit(self, x: int, y: int) -> ShotResult:
+        '''
+        Process a incoming shot by checking it against all Ships on the Board.
+        If the position has already been tried, return the previous result.
+        '''
+
         if (x, y) in self._tries:
             return self._tries[(x, y)]
 
@@ -64,6 +100,11 @@ class Board:
         return self.prettyprint()
 
     def prettyprint(self, blind: bool = True) -> str:
+        '''
+        Prints the current state of the Board in a 10x10 character grid.
+
+        :param bool blind: whether the Ships should be hidden.
+        '''
         result = [10*['~'] for _ in range(10)]
 
         if not blind:

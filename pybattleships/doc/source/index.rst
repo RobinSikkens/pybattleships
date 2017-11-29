@@ -11,8 +11,8 @@ Welcome to pybattleships's documentation!
    :caption: Contents:
 
    ship
-
-
+   board
+   game
 
 Indices and tables
 ==================

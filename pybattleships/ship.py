@@ -5,12 +5,10 @@ This module defines the class :class:`Ship`, and a helper class,
 import enum
 import re
 
-from typing import List, Tuple
-
 
 class ShotResult(enum.IntEnum):
     ''' A ShotResult represents the result of firing on a :class:`Ship`. '''
-    MISS = 0 
+    MISS = 0
     ''' Shot did not hit Ship. '''
     HIT = 1
     ''' Shot hit Ship, did not sink yet. '''
@@ -27,7 +25,6 @@ class ShotResult(enum.IntEnum):
 class Ship:
     '''
     A Ship represents a Battleship piece.
-
     '''
 
     def __init__(self, x: int, y: int, horizontal: bool, size: int):
@@ -37,6 +34,9 @@ class Ship:
         :param bool horizontal: Whether the ship is positioned horizontally
             (True), or vertically (False).
         :param int size: The number of squares the Ship occupies.
+
+        :raises ValueError: if the Ship is placed outside of the Board.
+        :raises ValueError: if the Ship has an invalid `size`.
         '''
         self._x = x
         self._y = y
@@ -68,12 +68,12 @@ class Ship:
         return self._hit >= self._size
 
     @property
-    def fields(self) -> List[Tuple[int, int]]:
+    def fields(self) -> [(int, int)]:
         '''
         Return the list of fields this Ship occupies as a list of (x, y)
         tuples.
 
-        :type: List[Tuple[int, int]]
+        :type: [(int, int)]
         '''
         pos_x, pos_y = self._x, self._y
         result = [(pos_x, pos_y)]
@@ -135,6 +135,9 @@ class Ship:
         '''
         Parse a written representation of a Ship, like `(A1, h, 2)`,
         return a new Ship on this position.
+
+        :param str notation: the notation to parse.
+        :raises ValueError: if the passed notation is invalid.
         '''
 
         match = cls.notational_regex.match(notation)
@@ -154,3 +157,30 @@ class Ship:
     def __repr__(self):
         return '<Ship({}, {}, {}, {})>'.format(self._x, self._y,
                 self._horizontal, self._size)
+
+    shot_pattern = r'''
+(?P<x>[A-Ja-j])
+(?P<y>([1-9]|10))
+    '''
+    shot_regex = re.compile(shot_pattern, re.X)
+
+    @staticmethod
+    def parse_shot_notation(notation: str) -> (int, int):
+        '''
+        Parse a single location on the board in traditional Battleships
+        notation (A1-J10), and return a (x, y)-tuple of indexes on the Board.
+
+        :param str notation: the notations to parse.
+
+        :raises ValueError: if the passed notation is invalid.
+        '''
+
+        match = cls.shot_regex.match(notation)
+
+        if not match:
+            raise ValueError("Invalid notation!")
+
+        x = ord(match.group('x').upper()) - ord('A')
+        y = int(match.group('y'))         - 1
+
+        return (x, y)
