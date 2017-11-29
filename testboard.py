@@ -1,5 +1,7 @@
+from copy import deepcopy
 from bottleships.ship import Ship, ShotResult
 from bottleships.board import Board
+from bottleships.game import Game
 
 #s = Ship.parse_notation('(B3, H, 3)')
 #fields = s.fields
@@ -36,5 +38,17 @@ shots = [
     (7, 7),
 ]
 
-for shot in shots:
-    board.process_hit(*shot)
+#for shot in shots:
+    #board.process_hit(*shot)
+
+p1 = 'xXx_meme_lol_420_xXx'
+p2 = '.:n0sc0p3r0b1n:.'
+gimma = Game(p1, p2)
+
+gimma.setup_board(p1, ships)
+gimma.setup_board(p2, deepcopy(ships))
+
+assert gimma.start_game()
+
+
+

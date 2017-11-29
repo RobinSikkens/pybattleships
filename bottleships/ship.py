@@ -9,10 +9,11 @@ class ShotResult(enum.IntEnum):
     MISS = 0
     HIT = 1
     SUNK = 2
+    LOSS = 3
 
     @property
     def char(self):
-        return ['*', 'X', '#'][self]
+        return ['*', 'X', '#', 'B^u'][self]
 
 class Ship:
     '''

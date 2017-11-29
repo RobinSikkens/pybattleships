@@ -7,13 +7,14 @@ from .ship import ShotResult, Ship
 
 class Board:
     ''' Represents one half of the game. '''
-    def __init__(self, ships : [Ship]) -> None:
+    def __init__(self, ships : [Ship], validate = True) -> None:
         self._tries = OrderedDict() # type: [(int, int)] : ShotResult
 
         self._ships = ships
+        self.ships_left = len(ships)
 
-        if not self.valid_board:
-            print('invalid!!!!')
+        if not self.valid_board and validate:
+            raise ValueError('Invalid ship configuration!')
 
     @property
     def valid_board(self) -> bool:
@@ -35,9 +36,13 @@ class Board:
 
         return True
 
+    @property
+    def is_loss(self) -> bool:
+        return self.ships_left <= 0
+
     def process_hit(self, x: int, y: int) -> ShotResult:
         if (x, y) in self._tries:
-            return self._tries((x, y))
+            return self._tries[(x, y)]
 
         results = []
         for ship in self._ships:
@@ -49,13 +54,16 @@ class Board:
         if hit_ship:
             theresult = hit_ship[0]
 
+            if theresult == ShotResult.SUNK:
+                self.ships_left -= 1
+
         self._tries[(x, y)] = theresult
         return theresult
 
     def __repr__(self) -> str:
         return self.prettyprint()
 
-    def prettyprint(self, blind: bool = False) -> str:
+    def prettyprint(self, blind: bool = True) -> str:
         result = [10*['~'] for _ in range(10)]
 
         if not blind:
