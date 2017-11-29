@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ship &mdash; pybattleships 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pybattleships 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="Board" href="board.html"/>
+        <link rel="prev" title="Welcome to pybattleships’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pybattleships
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="board.html">Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pybattleships</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Ship</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ship.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pybattleships.ship">
+<span id="ship"></span><h1>Ship<a class="headerlink" href="#module-pybattleships.ship" title="Permalink to this headline">¶</a></h1>
+<p>This module defines the class <a class="reference internal" href="#pybattleships.ship.Ship" title="pybattleships.ship.Ship"><code class="xref py py-class docutils literal"><span class="pre">Ship</span></code></a>, and a helper class,
+<a class="reference internal" href="#pybattleships.ship.ShotResult" title="pybattleships.ship.ShotResult"><code class="xref py py-class docutils literal"><span class="pre">ShotResult</span></code></a>.</p>
+<dl class="class">
+<dt id="pybattleships.ship.Ship">
+<em class="property">class </em><code class="descclassname">pybattleships.ship.</code><code class="descname">Ship</code><span class="sig-paren">(</span><em>x: int</em>, <em>y: int</em>, <em>horizontal: bool</em>, <em>size: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybattleships/ship.html#Ship"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybattleships.ship.Ship" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Ship represents a Battleship piece.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The x-coordinate of the top-left square.</li>
+<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The y-coordinate of the top-left square.</li>
+<li><strong>horizontal</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the ship is positioned horizontally
+(True), or vertically (False).</li>
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of squares the Ship occupies.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the Ship is placed outside of the Board.</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the Ship has an invalid <cite>size</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pybattleships.ship.Ship.fields">
+<code class="descname">fields</code><a class="headerlink" href="#pybattleships.ship.Ship.fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of fields this Ship occupies as a list of (x, y)
+tuples.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">[(int, int)]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pybattleships.ship.Ship.parse_notation">
+<em class="property">static </em><code class="descname">parse_notation</code><span class="sig-paren">(</span><em>notation: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybattleships/ship.html#Ship.parse_notation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybattleships.ship.Ship.parse_notation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a written representation of a Ship, like <cite>(A1, h, 2)</cite>,
+return a new Ship on this position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>notation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the notation to parse.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the passed notation is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pybattleships.ship.Ship.parse_shot_notation">
+<em class="property">static </em><code class="descname">parse_shot_notation</code><span class="sig-paren">(</span><em>notation: str) -&gt; (&lt;class 'int'&gt;</em>, <em>&lt;class 'int'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybattleships/ship.html#Ship.parse_shot_notation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybattleships.ship.Ship.parse_shot_notation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a single location on the board in traditional Battleships
+notation (A1-J10), and return a (x, y)-tuple of indexes on the Board.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>notation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the notations to parse.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the passed notation is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pybattleships.ship.Ship.process_hit">
+<code class="descname">process_hit</code><span class="sig-paren">(</span><em>x: int</em>, <em>y: int</em><span class="sig-paren">)</span> &#x2192; pybattleships.ship.ShotResult<a class="reference internal" href="_modules/pybattleships/ship.html#Ship.process_hit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybattleships.ship.Ship.process_hit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that the given shot was on this Ship, if so, increase the
+hitcounter. Return whether the Ship was missed, hit, or sunk.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.Ship.size">
+<code class="descname">size</code><a class="headerlink" href="#pybattleships.ship.Ship.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of fields the Ship occupies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.Ship.sunk">
+<code class="descname">sunk</code><a class="headerlink" href="#pybattleships.ship.Ship.sunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ship sinks when every position is hit, which means it has been hit
+<cite>size</cite> times. Once the ship has sunk, this property is True.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pybattleships.ship.ShotResult">
+<em class="property">class </em><code class="descclassname">pybattleships.ship.</code><code class="descname">ShotResult</code><a class="reference internal" href="_modules/pybattleships/ship.html#ShotResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybattleships.ship.ShotResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ShotResult represents the result of firing on a <a class="reference internal" href="#pybattleships.ship.Ship" title="pybattleships.ship.Ship"><code class="xref py py-class docutils literal"><span class="pre">Ship</span></code></a>.</p>
+<dl class="attribute">
+<dt id="pybattleships.ship.ShotResult.HIT">
+<code class="descname">HIT</code><em class="property"> = 1</em><a class="headerlink" href="#pybattleships.ship.ShotResult.HIT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shot hit Ship, did not sink yet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.ShotResult.LOSS">
+<code class="descname">LOSS</code><em class="property"> = 3</em><a class="headerlink" href="#pybattleships.ship.ShotResult.LOSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shot hit Ship, Ship sunk, Ship was last Ship on Board.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.ShotResult.MISS">
+<code class="descname">MISS</code><em class="property"> = 0</em><a class="headerlink" href="#pybattleships.ship.ShotResult.MISS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shot did not hit Ship.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.ShotResult.SUNK">
+<code class="descname">SUNK</code><em class="property"> = 2</em><a class="headerlink" href="#pybattleships.ship.ShotResult.SUNK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shot hit Ship, Ship sunk.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pybattleships.ship.ShotResult.char">
+<code class="descname">char</code><a class="headerlink" href="#pybattleships.ship.ShotResult.char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the character to use when pretty-printing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="board.html" class="btn btn-neutral float-right" title="Board" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to pybattleships’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Robin Sikkens &amp; Maarten van den Berg.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
