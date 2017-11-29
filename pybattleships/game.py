@@ -1,8 +1,8 @@
 '''
 Defines the Game.
 '''
-from bottleships.board import Board
-from bottleships.ship import Ship, ShotResult
+from .board import Board
+from .ship import Ship, ShotResult
 
 class Game:
     def __init__(self, player1, player2):
