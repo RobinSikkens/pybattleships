@@ -56,6 +56,21 @@ class Game:
         self.boards[player_id] = board
         return True
 
+
+    def register_board(self, player_id: str, board : Board):
+        '''
+        Register a board object to a player
+
+        :param str player_id: the player identifier to set the board for.
+        :param Board board: the board to register to the player.
+
+        :raises AssertionError: if the passed player identifier is unknown.
+        '''
+
+        assert player_id in self.boards
+        self.boards[player_id] = board
+
+
     def start_game(self) -> bool:
         '''
         Asserts both boards are present and valid, starts the Game, and gives
