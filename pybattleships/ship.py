@@ -130,8 +130,8 @@ class Ship:
     '''
     notational_regex = re.compile(notational_pattern, re.X)
 
-    @staticmethod
-    def parse_notation(notation: str):
+    @classmethod
+    def parse_notation(cls, notation: str):
         '''
         Parse a written representation of a Ship, like `(A1, h, 2)`,
         return a new Ship on this position.
@@ -164,8 +164,8 @@ class Ship:
     '''
     shot_regex = re.compile(shot_pattern, re.X)
 
-    @staticmethod
-    def parse_shot_notation(notation: str) -> (int, int):
+    @classmethod
+    def parse_shot_notation(cls, notation: str) -> (int, int):
         '''
         Parse a single location on the board in traditional Battleships
         notation (A1-J10), and return a (x, y)-tuple of indexes on the Board.
