@@ -87,6 +87,15 @@ class Game:
         self.turn = 1
         return True
 
+    def print_board(self, player_id: str, blind: bool = True) -> str:
+        '''
+        Prints the board associated with the played_id passed.
+        '''
+
+        return self.boards[player_id].prettyprint(blind=blind)
+
+
+
     @property
     def current_player(self) -> str:
         '''

@@ -142,7 +142,7 @@ class Ship:
     notational_pattern = r'''
 \(
 (?P<x>[A-Ja-j])
-(?P<y>([1-9]|10)),\s*
+(?P<y>(10|[1-9])),\s*
 (?P<orientation>[hHvV]),\s*
 (?P<size>[2-5])
 \)
@@ -181,7 +181,7 @@ class Ship:
 
     shot_pattern = r'''
 (?P<x>[A-Ja-j])
-(?P<y>([1-9]|10))
+(?P<y>(10|[1-9]))
     '''
     shot_regex = re.compile(shot_pattern, re.X)
 
