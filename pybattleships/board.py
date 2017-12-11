@@ -11,7 +11,7 @@ class Board:
     '''
     A Board is a 10x10 grid that holds :class:`Ship` s.
     '''
-    def __init__(self, ships : [Ship], validate = True):
+    def __init__(self, ships: [Ship], validate=True):
         '''
         :param [Ship] ships: the ships to place on the Board.
         :param bool validate: whether the board configuration must be valid.

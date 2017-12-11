@@ -47,8 +47,15 @@ class Ship:
         self._hit = 0
 
         # Check boundaries
-        if (horizontal and x+size-1 >= 10) or (not horizontal and y+size-1 >= 10) \
-            or x < 0 or y < 0:
+        out_of_bounds = any(
+            [
+                horizontal and (x+size-1 >= 10),
+                not horizontal and (y+size-1 >= 10),
+                x < 0,
+                y < 0
+            ]
+        )
+        if out_of_bounds:
             raise ValueError(
                 "Can't place a Ship outside of the board: {}, {}".format(
                     x+size, y)
@@ -85,11 +92,13 @@ class Ship:
             deltax = 0
             deltay = 1 # Go down
 
-        for i in range(self._size-1):
+        for _ in range(self._size-1):
             pos_x += deltax
             pos_y += deltay
 
-            result.append( (pos_x, pos_y) )
+            result.append(
+                (pos_x, pos_y)
+            )
 
         return result
 
@@ -99,11 +108,21 @@ class Ship:
         hitcounter. Return whether the Ship was missed, hit, or sunk.
         '''
 
-        if (self._horizontal and \
-            y == self._y and x >= self._x and x < self._x + self._size) \
-           or (not self._horizontal and \
-            x == self._x and y >= self._y and y < self._y + self._size):
+        hit_ship = \
+            all([
+                self._horizontal,
+                y == self._y,
+                x >= self._x,
+                x < (self._x + self._size)
+            ]) or \
+            all([
+                not self._horizontal,
+                x == self._x,
+                y >= self._y,
+                y < (self._y + self._size)
+            ])
 
+        if hit_ship:
             self._hit += 1
             if self.sunk:
                 return ShotResult.SUNK
@@ -155,8 +174,10 @@ class Ship:
         return Ship(x, y, horizontal, size)
 
     def __repr__(self):
-        return '<Ship({}, {}, {}, {})>'.format(self._x, self._y,
-                self._horizontal, self._size)
+        return '<Ship({}, {}, {}, {})>'.format(
+            self._x, self._y,
+            self._horizontal, self._size
+        )
 
     shot_pattern = r'''
 (?P<x>[A-Ja-j])

@@ -31,7 +31,7 @@ class Game:
             player2: None
         }
 
-    def setup_board(self, player_id: str, ships : [Ship]) -> bool:
+    def setup_board(self, player_id: str, ships: [Ship]) -> bool:
         '''
         Create a Board from the given set of ships, assert validity and
         register the Board with the Game if it is valid.
@@ -57,7 +57,7 @@ class Game:
         return True
 
 
-    def register_board(self, player_id: str, board : Board):
+    def register_board(self, player_id: str, board: Board):
         '''
         Register a board object to a player
 
@@ -80,7 +80,7 @@ class Game:
         on success.
         '''
 
-        for player, board in self.boards.items():
+        for _player, board in self.boards.items():
             if not (board and board.valid_board):
                 return False
 
